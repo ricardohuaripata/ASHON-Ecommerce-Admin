@@ -1,9 +1,9 @@
-import { Product } from "./product";
+import { Product } from './product';
 
 export interface Size {
-    _id?: string;
-    product?: Product[];
-    size?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
-  }
+  _id?: string;
+  product?: Product[];
+  size?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
