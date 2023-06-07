@@ -1,0 +1,68 @@
+<app-sidebar></app-sidebar>
+<!-- CONTENT -->
+<section id="content">
+
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Admin Users</h1>
+            </div>
+        </div>
+        <ul class="box-info">
+            <li>
+                <i class='bx bxs-group'></i>
+                <span class="text">
+                    <h3>{{ users.length }}</h3>
+                    <p>Total users</p>
+                </span>
+            </li>
+        </ul>
+        <div class="table-data">
+            <div class="order">
+                <div class="head">
+                    <h3>Users</h3>
+                </div>
+                <table>
+
+                    <tbody>
+                        <th>
+                            FullName
+                        </th>
+                        <th>
+                            Username
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Role
+                        </th>
+                        <tr *ngFor="let user of users">
+                            <td>
+                                <p>{{ user.name }}</p>
+                            </td>
+                            <td>
+                                <p>{{ user.username }}</p>
+                            </td>
+                            <td>
+                                <p>{{ user.email }}</p>
+                            </td>
+                            <td>
+                                <p>{{ user.phone==''?'empty':user.phone}}</p>
+                            </td>
+                            <td>
+                                <p>{{ user.role }}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->

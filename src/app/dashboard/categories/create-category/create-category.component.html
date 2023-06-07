@@ -1,0 +1,47 @@
+<app-sidebar></app-sidebar>
+<!-- CONTENT -->
+<section id="content">
+
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+            <h2>New category </h2>
+            <form [formGroup]="form" (ngSubmit)="addCategory()" class="was-validated">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea formControlName="description" class="form-control" id="description" placeholder="Enter description"
+                        required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="uploadImage" class="form-label">Upload image</label>
+                    <input formControlName="uploadImage" type="file"  (change)="onFileDrop($event)" class="form-control" id="uploadImage" required>
+                </div>
+
+                <div class="row mt-2 text-center">
+      
+                    <div class="col-lg-6 mt-2">
+                        <button type="button" class="btn btn-outline-danger" routerLink="/categories">Cancel</button>
+                    </div>
+    
+                    <div class="col-lg-6 mt-2">
+                        <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid">Accept</button>
+                     </div>
+    
+                </div>
+            </form>
+
+
+
+        </div>
+
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->

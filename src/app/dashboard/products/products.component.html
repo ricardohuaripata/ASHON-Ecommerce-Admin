@@ -1,0 +1,92 @@
+<app-sidebar></app-sidebar>
+<!-- CONTENT -->
+<section id="content">
+
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Admin Products</h1>
+            </div>
+        </div>
+
+        <div class="table-data" id="main-container">
+            <div class="order">
+                <div class="head">
+                    <h3>Products</h3>
+                    <button class="btn btn-outline-success" routerLink="/products/new">New product</button>
+                </div>
+                <table *ngIf="!loading">
+
+                    <tbody>
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Stock
+                        </th>
+                        <th>
+                            Genre
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Sold
+                        </th>
+
+                        <tr *ngFor="let product of products">
+                            <td>
+                                <img [src]="product.mainImage">
+                                <p> <small>{{ product.name }} </small></p>
+                            </td>
+
+                            <td>
+                                <p>{{ product.quantity }}</p>
+                            </td>
+                            <td>
+                                <p>{{ product.genre }}</p>
+                            </td>
+                            <td>
+                                <p>{{ product.price | currency }}</p>
+                            </td>
+                            <td>
+                                <p>{{ product.sold }}</p>
+                            </td>
+                            <td>
+                                <a (click)="openDeleteConfirmation(product._id)" class="btn btn-outline-danger"
+                                    data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+    <!-- MAIN -->
+
+</section>
+<!-- CONTENT -->
+
+<!-- Delete Modal
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+    aria-hidden="true">
+    <div class="modal-dialog d-flex align-items-center modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModelLabel">Delete product</h5>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the product '{{productToDelete?.name}}'?</p>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">I'm not sure</button>
+                    <button (click)="deleteProduct(productToDelete?._id!)" class="btn btn-outline-danger"
+                        data-dismiss="modal">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->

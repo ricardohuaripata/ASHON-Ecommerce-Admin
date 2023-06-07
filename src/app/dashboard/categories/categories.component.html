@@ -1,0 +1,56 @@
+<app-sidebar></app-sidebar>
+<!-- CONTENT -->
+<section id="content">
+
+    <!-- MAIN -->
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Admin Categories</h1>
+            </div>
+        </div>
+
+        <div class="table-data" id="main-container">
+            <div class="order">
+                <div class="head">
+                    <h3>Categories</h3>
+                    <button class="btn btn-outline-success" routerLink="/categories/new">New category</button>
+
+                </div>
+                <table *ngIf="!loading">
+
+                    <tbody>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Id
+                        </th>
+
+                        <tr *ngFor="let category of categories">
+                            <td>
+                                <img [src]="category.image">
+                                <p>{{ category.name }}</p>
+                            </td>
+                            <td>
+                                <p>{{ category.description }}</p>
+                            </td>
+                            <td>
+                                <p>{{ category._id }}</p>
+                            </td>
+                            <td>
+                                <a (click)="openDeleteConfirmation(category._id)" class="btn btn-outline-danger"
+                                    data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- MAIN -->
+</section>
+<!-- CONTENT -->
