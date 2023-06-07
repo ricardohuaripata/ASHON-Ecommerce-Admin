@@ -1,48 +1,69 @@
-<!-- SIDEBAR -->
-<section id="sidebar" [ngClass]="status ? 'hide' : ''">
-    <a href="#" class="brand">
-        <i class='bx bxs-smile'></i>
-        <span class="text">Admin</span>
-    </a>
-    <ul class="side-menu top">
-        <li [class.active]="isActive('')">
-            <a routerLink="">
-                <i class='bx bxs-dashboard'></i>
-                <span class="text">Dashboard</span>
-            </a>
-        </li>
-        <li [class.active]="isActive('/users')">
-            <a routerLink="/users">
-                <i class='bx bxs-group'></i>
-                <span class="text">Users</span>
-            </a>
-        </li>
-        <li [class.active]="isActive('/products')">
-            <a routerLink="/products">
-                <i class='bx bxs-shopping-bag-alt'></i>
-                <span class="text">Products</span>
-            </a>
-        </li>
-        <li [class.active]="isActive('/categories')">
-            <a routerLink="/categories">
-                <i class='bx bxs-shopping-bag-alt'></i>
-                <span class="text">Categories</span>
-            </a>
-        </li>
-    </ul>
-    <ul class="side-menu">
-        <li>
-            <a href="#" (click)="logOut()" class="logout">
-                <i class='bx bxs-log-out-circle'></i>
-                <span class="text">Logout</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bxs-cog'></i>
-                <span class="text">Profile</span>
-            </a>
-        </li>
-    </ul>
-</section>
-<!-- SIDEBAR -->
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a [class.active]="isActive('')" class="nav-link" aria-current="page" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-home align-text-bottom" aria-hidden="true">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg> Dashboard
+                </a>
+            </li>
+        </ul>
+        <h6
+            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>PRODUCTS</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+
+            <li class="nav-item">
+                <a [class.active]="isActive('/products')" class="nav-link" routerLink="/products">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-shopping-cart align-text-bottom" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg> Products
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [class.active]="isActive('/categories')" class="nav-link" routerLink="/categories">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-shopping-cart align-text-bottom" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg> Categories
+                </a>
+            </li>
+
+        </ul>
+
+        <h6
+            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>CUSTOMERS</span>
+        </h6>
+        <ul class="nav flex-column mb-2">
+
+            <li class="nav-item">
+                <a [class.active]="isActive('/users')" class="nav-link" routerLink="/users">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-users align-text-bottom" aria-hidden="true">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg> Customers
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>

@@ -1,82 +1,89 @@
-<app-sidebar></app-sidebar>
-<!-- CONTENT -->
-<section id="content">
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
 
-    <!-- MAIN -->
-    <main>
-        <div class="container">
-            <h2>New product </h2>
+        <app-sidebar></app-sidebar>
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 my-5">
+
             <form [formGroup]="form" (ngSubmit)="addProduct()" class="was-validated">
+                <h2>New product</h2>
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter name" required>
+                    <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter name"
+                        required>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea formControlName="description" class="form-control" id="description" placeholder="Enter description"
-                        required></textarea>
+                    <textarea formControlName="description" class="form-control" id="description"
+                        placeholder="Enter description" required rows="5"></textarea>
                 </div>
 
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <input formControlName="category" type="text" class="form-control" id="category" placeholder="Enter category" required>
+                    <input formControlName="category" type="text" class="form-control" id="category"
+                        placeholder="Enter category" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="genre" class="form-label">Genre</label>
-                    <input formControlName="genre" type="text" class="form-control" id="genre" placeholder="Enter genre(men or women)" required>
+                    <input formControlName="genre" type="text" class="form-control" id="genre"
+                        placeholder="Enter genre(men or women)" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input formControlName="price" type="number" class="form-control" id="price" placeholder="Enter price" required>
+                    <input formControlName="price" type="number" class="form-control" id="price"
+                        placeholder="Enter price" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="colors" class="form-label">Colors</label>
-                    <input formControlName="colors" type="text" class="form-control" id="colors" placeholder="Enter colors" required>
+                    <input formControlName="colors" type="text" class="form-control" id="colors"
+                        placeholder="Enter colors" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="sizes" class="form-label">Sizes</label>
-                    <input formControlName="sizes" type="text" class="form-control" id="sizes" placeholder="Enter sizes" required>
+                    <input formControlName="sizes" type="text" class="form-control" id="sizes" placeholder="Enter sizes"
+                        required>
                 </div>
 
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Stock</label>
-                    <input formControlName="quantity" type="number" class="form-control" id="quantity" placeholder="Enter quantity" required>
+                    <input formControlName="quantity" type="number" class="form-control" id="quantity"
+                        placeholder="Enter quantity" required>
                 </div>
-                
+
                 <div class="mb-3">
                     <label for="mainImage" class="form-label">Upload main image</label>
-                    <input formControlName="mainImage" type="file" (change)="onMainImageSelected($event)" class="form-control" id="mainImage" required>
+                    <input formControlName="mainImage" type="file" (change)="onMainImageSelected($event)"
+                        class="form-control" id="mainImage" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="images" class="form-label">Upload images</label>
-                    <input formControlName="images" type="file" multiple (change)="onImagesSelected($event)" class="form-control" id="images" required>
+                    <input formControlName="images" type="file" multiple (change)="onImagesSelected($event)"
+                        class="form-control" id="images" required>
                 </div>
 
                 <div class="row mt-2 text-center">
-      
+
                     <div class="col-lg-6 mt-2">
                         <button type="button" class="btn btn-outline-danger" routerLink="/products">Cancel</button>
                     </div>
-    
+
                     <div class="col-lg-6 mt-2">
                         <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid">Accept</button>
-                     </div>
-    
+                    </div>
+
                 </div>
             </form>
 
 
-
-        </div>
-
-    </main>
-    <!-- MAIN -->
-</section>
-<!-- CONTENT -->
+        </main>
+    </div>
+</div>

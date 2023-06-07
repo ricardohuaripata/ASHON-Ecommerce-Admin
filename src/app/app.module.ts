@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
 import { CreateCategoryComponent } from './dashboard/categories/create-category/create-category.component';
 import { CreateProductComponent } from './dashboard/products/create-product/create-product.component';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CreateProductComponent } from './dashboard/products/create-product/crea
     SidebarComponent,
     CreateCategoryComponent,
     CreateProductComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

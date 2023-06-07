@@ -47,7 +47,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   onImagesSelected(event: any) {
-
     const files = event.target.files;
     const imageArray = this.form.get('images') as FormArray;
 
@@ -63,6 +62,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   addProduct() {
+    this.form.disable;
     this.mostrarEsperaCarga();
 
     const formData = new FormData();
@@ -113,5 +113,4 @@ export class CreateProductComponent implements OnInit {
       },
     });
   }
-
 }

@@ -20,18 +20,4 @@ export class SidebarComponent {
     return this.router.isActive(url, true);
   }
 
-  logOut() {
-
-    const token = localStorage.getItem('token');
-
-    this._authService.logout(token!).subscribe({
-      next: (data: any) => {
-        localStorage.removeItem('token');
-        this.router.navigate(['/auth/login']);
-      },
-      error: (event: HttpErrorResponse) => {},
-    });
-
-  }
-
 }

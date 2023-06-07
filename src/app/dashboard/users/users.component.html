@@ -1,46 +1,38 @@
-<app-sidebar></app-sidebar>
-<!-- CONTENT -->
-<section id="content">
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
 
-    <!-- MAIN -->
-    <main>
-        <div class="head-title">
-            <div class="left">
-                <h1>Admin Users</h1>
+        <app-sidebar></app-sidebar>
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" *ngIf="!loading">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Admin Users</h1>
             </div>
-        </div>
-        <ul class="box-info">
-            <li>
-                <i class='bx bxs-group'></i>
-                <span class="text">
-                    <h3>{{ users.length }}</h3>
-                    <p>Total users</p>
-                </span>
-            </li>
-        </ul>
-        <div class="table-data">
-            <div class="order">
-                <div class="head">
-                    <h3>Users</h3>
-                </div>
-                <table>
 
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-group'></i>
+                    <span class="text">
+                        <h3>{{ users.length }}</h3>
+                        <p>Total users</p>
+                    </span>
+                </li>
+            </ul>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">FullName</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Role</th>
+
+                        </tr>
+                    </thead>
                     <tbody>
-                        <th>
-                            FullName
-                        </th>
-                        <th>
-                            Username
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Phone
-                        </th>
-                        <th>
-                            Role
-                        </th>
                         <tr *ngFor="let user of users">
                             <td>
                                 <p>{{ user.name }}</p>
@@ -61,8 +53,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </main>
-    <!-- MAIN -->
-</section>
-<!-- CONTENT -->
+        </main>
+    </div>
+</div>

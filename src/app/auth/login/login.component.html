@@ -1,26 +1,23 @@
-<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
-    <div class="col-lg-4 col-md-6 col-sm-8">
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title text-center mb-4">LOGIN</h3>
-                <form [formGroup]="form" (ngSubmit)="loginUser()">
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Enter email</label>
-                        <input formControlName="email" type="text" class="form-control" id="email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="form-label">Enter password</label>
-                        <input formControlName="password" type="password" class="form-control" id="password">
-                    </div>
-                    <div class="d-grid gap-2">
-                        <button [disabled]="form.invalid" type="submit" class="btn btn-dark">LOGIN</button>
-                    </div>
-                </form>
-                <hr>
-                <div class="text-center">
-                    <p>Must have admin role to access</p>
-                </div>
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="row gy-3">
+        <h3 class="card-title text-center mb-4">LOGIN</h3>
+        <form [formGroup]="form" (ngSubmit)="loginUser()">
+            <div class="mb-3">
+                <label for="email" class="form-label">Enter email</label>
+                <input formControlName="email" type="text" class="form-control" id="email">
             </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Enter password</label>
+                <input formControlName="password" type="password" class="form-control" id="password">
+            </div>
+            <div class="d-grid gap-2">
+                <button [disabled]="form.invalid" type="submit" class="btn btn-dark">LOGIN</button>
+            </div>
+        </form>
+        <hr>
+        <div class="text-center">
+            <p>info: Only admin can access</p>
         </div>
+
     </div>
 </div>

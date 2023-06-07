@@ -1,39 +1,38 @@
-<app-sidebar></app-sidebar>
-<!-- CONTENT -->
-<section id="content">
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
 
-    <!-- MAIN -->
-    <main>
-        <div class="head-title">
-            <div class="left">
-                <h1>Admin Categories</h1>
+        <app-sidebar></app-sidebar>
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" *ngIf="!loading">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Admin Categories</h1>
             </div>
-        </div>
 
-        <div class="table-data" id="main-container">
-            <div class="order">
-                <div class="head">
-                    <h3>Categories</h3>
-                    <button class="btn btn-outline-success" routerLink="/categories/new">New category</button>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3>Categories</h3>
+                <button class="btn btn-outline-success" routerLink="/categories/new">New category</button>
+            </div>
 
-                </div>
-                <table *ngIf="!loading">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Id</th>
 
+                        </tr>
+                    </thead>
                     <tbody>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Description
-                        </th>
-                        <th>
-                            Id
-                        </th>
-
                         <tr *ngFor="let category of categories">
                             <td>
-                                <img [src]="category.image">
-                                <p>{{ category.name }}</p>
+                                <div class="d-flex align-items-center">
+                                    <img [src]="category.image" class="me-2" width="100">
+                                    <p>{{ category.name }}</p>
+                                </div>
                             </td>
                             <td>
                                 <p>{{ category.description }}</p>
@@ -49,8 +48,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </main>
-    <!-- MAIN -->
-</section>
-<!-- CONTENT -->
+        </main>
+    </div>
+</div>

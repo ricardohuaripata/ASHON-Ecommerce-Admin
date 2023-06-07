@@ -1,52 +1,45 @@
-<app-sidebar></app-sidebar>
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row">
 
-<!-- CONTENT -->
-<section id="content">
-    <!-- MAIN -->
-    <main *ngIf="!loading">
-        <div class="head-title">
-            <div class="left">
-                <h1>Dashboard</h1>
+        <app-sidebar></app-sidebar>
+
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" *ngIf="!loading">
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
             </div>
-        </div>
-        <ul class="box-info">
-            <li>
-                <i class='bx bxs-calendar-check'></i>
-                <span class="text">
-                    <h3>{{ orders.length }}</h3>
-                    <p>Orders</p>
-                </span>
-            </li>
-            <li>
-                <i class='bx bxs-dollar-circle'></i>
-                <span class="text">
-                    <h3>{{ totalSales | currency }}</h3>
-                    <p>Total Sales</p>
-                </span>
-            </li>
-        </ul>
-        <div class="table-data">
-            <div class="order">
-                <div class="head">
-                    <h3>Recent Orders</h3>
-                </div>
-                <table>
+
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-calendar-check'></i>
+                    <span class="text">
+                        <h3>{{ orders.length }}</h3>
+                        <p>Orders</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-dollar-circle'></i>
+                    <span class="text">
+                        <h3>{{ totalSales | currency }}</h3>
+                        <p>Total Sales</p>
+                    </span>
+                </li>
+            </ul>
+            <div class="table-responsive">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Stripe ID</th>
-                            <th>User</th>
-                            <th>Address</th>
-                            <th>Total Price</th>
-                            <th>Status</th>
-                            <th>Created At</th>
+                            <th scope="col">StripeId</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Created</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let order of orders">
                             <td>{{ order.paymentStripeId }}</td>
-                            <td>{{ order.user }}</td>
-                            <td>{{ order.shippingAddress.address }}, {{ order.shippingAddress.city }}, {{
-                                order.shippingAddress.country }}</td>
                             <td>{{ order.totalPrice | currency }}</td>
                             <td [ngClass]="{ 'text-danger': order.status === 'Not Processed',
                             'text-primary': order.status === 'Processing',
@@ -58,8 +51,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </main>
-    <!-- MAIN -->
-</section>
-<!-- CONTENT -->
+        </main>
+    </div>
+</div>
