@@ -36,12 +36,14 @@ export class DashboardComponent implements OnInit {
         this.orders = data.orders;
         this.calculateTotalSales(); // Calcular el total de ventas después de obtener los pedidos
         this.loading = false;
-        Swal.close(); // Cerrar el diálogo de espera una vez que se obtienen los productos
+        Swal.close();
 
       },
-      error: (event: HttpErrorResponse) => {
+      error: (error: HttpErrorResponse) => {
         this.orders = [];
-        this._errorService.msgError(event);
+        this.loading = false;
+        Swal.close();
+        this._errorService.msgError(error);
       },
     });
   }

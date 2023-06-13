@@ -29,30 +29,14 @@ export class ProductsComponent implements OnInit {
         this.loading = false;
         Swal.close(); // Cerrar el diálogo de espera una vez que se obtienen los productos
       },
-      (error) => {
-        console.error(error);
+      (error: HttpErrorResponse) => {
+        this.loading = false;
+        Swal.close();
+        this._errorService.msgError(error);
       }
     );
   }
-/*
-  onOpenDeleteModal(product?: Product): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
 
-    this.productToDelete = product;
-    button.setAttribute('data-target', '#deleteModal');
-
-    if (container) {
-      container.appendChild(button);
-    }
-
-    button.click();
-  }
-*/
-  // DELETE
   deleteProduct(productId: string): void {
     this.productService.deleteProduct(productId).subscribe({
       next: (data: any) => {
@@ -67,8 +51,8 @@ export class ProductsComponent implements OnInit {
           }
         );
       },
-      error: (event: HttpErrorResponse) => {
-        this._errorService.msgError(event);
+      error: (error: HttpErrorResponse) => {
+        this._errorService.msgError(error);
       },
     });
   }
@@ -101,5 +85,4 @@ export class ProductsComponent implements OnInit {
       }
     });
   }
-
 }

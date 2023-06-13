@@ -30,8 +30,10 @@ export class CategoriesComponent implements OnInit {
         this.loading = false;
         Swal.close();
       },
-      (error) => {
-        console.error(error);
+      (error: HttpErrorResponse) => {
+        this.loading = false;
+        Swal.close();
+        this._errorService.msgError(error);   
       }
     );
   }
