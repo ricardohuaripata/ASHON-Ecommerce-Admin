@@ -37,7 +37,6 @@ export class DashboardComponent implements OnInit {
         this.calculateTotalSales(); // Calcular el total de ventas después de obtener los pedidos
         this.loading = false;
         Swal.close();
-
       },
       error: (error: HttpErrorResponse) => {
         this.orders = [];
@@ -49,7 +48,10 @@ export class DashboardComponent implements OnInit {
   }
 
   calculateTotalSales(): void {
-    this.totalSales = this.orders.reduce((total, order) => total + order.totalPrice, 0);
+    this.totalSales = this.orders.reduce(
+      (total, order) => total + order.totalPrice,
+      0
+    );
   }
 
   mostrarEsperaCarga() {
@@ -63,5 +65,4 @@ export class DashboardComponent implements OnInit {
       },
     });
   }
-
 }

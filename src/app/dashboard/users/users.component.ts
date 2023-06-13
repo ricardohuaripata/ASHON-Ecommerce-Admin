@@ -14,7 +14,10 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   loading: boolean = false;
 
-  constructor(private _errorService: ErrorService, private usersService: UsersService) {}
+  constructor(
+    private _errorService: ErrorService,
+    private usersService: UsersService
+  ) {}
 
   ngOnInit(): void {
     this.mostrarEsperaCarga();
@@ -28,7 +31,7 @@ export class UsersComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.loading = false;
         Swal.close();
-        this._errorService.msgError(error);   
+        this._errorService.msgError(error);
       }
     );
   }
@@ -44,5 +47,4 @@ export class UsersComponent implements OnInit {
       },
     });
   }
-
 }

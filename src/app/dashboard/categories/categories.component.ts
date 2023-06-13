@@ -33,7 +33,7 @@ export class CategoriesComponent implements OnInit {
       (error: HttpErrorResponse) => {
         this.loading = false;
         Swal.close();
-        this._errorService.msgError(error);   
+        this._errorService.msgError(error);
       }
     );
   }
@@ -87,5 +87,4 @@ export class CategoriesComponent implements OnInit {
       },
     });
   }
-
 }

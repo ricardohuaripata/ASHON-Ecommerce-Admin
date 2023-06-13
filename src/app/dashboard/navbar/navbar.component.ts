@@ -22,7 +22,7 @@ export class NavbarComponent {
     this._authService.logout(token!).subscribe({
       next: (data: any) => {
         localStorage.removeItem('token');
-        this.toastr.success("Successful logout", data.type);
+        this.toastr.success('Successful logout', data.type);
       },
       error: (event: HttpErrorResponse) => {},
     });
