@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
-  categoryToDelete: Category | undefined;
   loading: boolean = false;
 
   constructor(
@@ -60,15 +59,8 @@ export class CategoriesComponent implements OnInit {
     this.categoriesService.deleteCategory(categoryId).subscribe({
       next: (data: any) => {
         this.toastr.success(data.message, data.type);
+        location.reload();
 
-        this.categoriesService.getCategories().subscribe(
-          (data: any) => {
-            this.categories = data.categories;
-          },
-          (error) => {
-            console.error(error);
-          }
-        );
       },
       error: (event: HttpErrorResponse) => {
         this._errorService.msgError(event);

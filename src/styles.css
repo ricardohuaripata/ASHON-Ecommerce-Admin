@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap");
 
 body {
-  font-family: 'Dosis', sans-serif;
+  font-family: "Dosis", sans-serif;
 }
 
 :root {
@@ -155,4 +154,8 @@ body {
 .form-control {
   height: 40px; /* Cambia la altura según tus necesidades */
   border-radius: 0; /* Bordes rectos */
+}
+
+.custom-textarea-input {
+  height: 120px !important;
 }

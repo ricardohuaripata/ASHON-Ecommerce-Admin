@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../interfaces/product';
-import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -17,8 +17,8 @@ export class ProductsService {
     this.apiUrl = 'api/product/';
   }
 
-  getProducts(): Observable<any> {
-    return this.http.get<any>(this.serverUrl + this.apiUrl);
+  getProducts(params: HttpParams): Observable<any> {
+    return this.http.get<any>(this.serverUrl + this.apiUrl, { params });
   }
   
   addProduct(productData: FormData): Observable<any> {

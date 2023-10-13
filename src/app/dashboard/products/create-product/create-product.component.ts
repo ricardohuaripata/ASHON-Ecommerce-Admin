@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/services/products.service';
 import { ErrorService } from 'src/app/services/error.service'; // servicio para mostrar mensajes de errores devueltos por el backend
 import Swal from 'sweetalert2';
+import { CategoriesService } from 'src/app/services/categories.service';
+import { Category } from 'src/app/interfaces/category';
 
 @Component({
   selector: 'app-create-product',
@@ -15,13 +17,16 @@ import Swal from 'sweetalert2';
 export class CreateProductComponent implements OnInit {
   form: FormGroup;
   loading: boolean = false;
+  submited: boolean = false;
+  categories: Category[] = [];
 
   constructor(
     private fb: FormBuilder,
     private _productService: ProductsService,
     private toastr: ToastrService,
     private router: Router,
-    private _errorService: ErrorService
+    private _errorService: ErrorService,
+    private categoriesService: CategoriesService
   ) {
     this.form = this.fb.group({
       // validar campo requerido
@@ -30,38 +35,24 @@ export class CreateProductComponent implements OnInit {
       category: ['', Validators.required],
       genre: ['', Validators.required],
       price: [null, Validators.required],
+      priceDiscount: [0, Validators.required],
       colors: ['', Validators.required],
       sizes: ['', Validators.required],
       quantity: [null, Validators.required],
       mainImage: ['', Validators.required],
-      images: this.fb.array([]),
+      images: this.fb.array([], Validators.required),
     });
   }
-  ngOnInit(): void {}
-
-  onMainImageSelected(event: any) {
-    console.log(event.target.files);
-
-    const file = event.target.files[0];
-    this.form.get('mainImage')?.setValue(file);
-  }
-
-  onImagesSelected(event: any) {
-    const files = event.target.files;
-    const imageArray = this.form.get('images') as FormArray;
-
-    // Limpiar el FormArray existente
-    while (imageArray.length !== 0) {
-      imageArray.removeAt(0);
-    }
-
-    // Agregar los archivos seleccionados al FormArray
-    for (let i = 0; i < files.length; i++) {
-      imageArray.push(this.fb.control(files[i]));
-    }
+  ngOnInit(): void {
+    this.getCategories();
   }
 
   addProduct() {
+    this.submited = true;
+    if (this.form.invalid) {
+      return;
+    }
+
     this.form.disable;
     this.mostrarEsperaCarga();
 
@@ -72,7 +63,7 @@ export class CreateProductComponent implements OnInit {
     formData.append('category', this.form.get('category')?.value);
     formData.append('genre', this.form.get('genre')?.value);
     formData.append('price', this.form.get('price')?.value);
-    formData.append('priceDiscount', '0');
+    formData.append('priceDiscount', this.form.get('priceDiscount')?.value);
     formData.append('colors', this.form.get('colors')?.value);
     formData.append('sizes', this.form.get('sizes')?.value);
     formData.append('quantity', this.form.get('quantity')?.value);
@@ -112,5 +103,38 @@ export class CreateProductComponent implements OnInit {
         Swal.showLoading();
       },
     });
+  }
+
+  getCategories() {
+    this.categoriesService.getCategories().subscribe(
+      (data: any) => {
+        this.categories = data.categories;
+      },
+      (error: HttpErrorResponse) => {
+        this._errorService.msgError(error);
+      }
+    );
+  }
+
+  onMainImageSelected(event: any) {
+    console.log(event.target.files);
+
+    const file = event.target.files[0];
+    this.form.get('mainImage')?.setValue(file);
+  }
+
+  onImagesSelected(event: any) {
+    const files = event.target.files;
+    const imageArray = this.form.get('images') as FormArray;
+
+    // Limpiar el FormArray existente
+    while (imageArray.length !== 0) {
+      imageArray.removeAt(0);
+    }
+
+    // Agregar los archivos seleccionados al FormArray
+    for (let i = 0; i < files.length; i++) {
+      imageArray.push(this.fb.control(files[i]));
+    }
   }
 }
