@@ -22,8 +22,8 @@ export class OrderService {
     this.apiUrl = 'api/order/';
   }
 
-  getAllOrders(): Observable<any> {
-    return this.http.get(this.serverUrl + this.apiUrl + "history");
+  getAllOrders(params: HttpParams): Observable<any> {
+    return this.http.get(this.serverUrl + this.apiUrl + "history", { params });
   }
 
 }

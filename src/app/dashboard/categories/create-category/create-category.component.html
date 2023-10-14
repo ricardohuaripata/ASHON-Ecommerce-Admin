@@ -7,25 +7,34 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3 mb-5">
 
-            <form [formGroup]="form" (ngSubmit)="addCategory()" class="was-validated">
-                <h2>New category </h2>
+            <form [formGroup]="form" (ngSubmit)="addCategory()">
+                <h2 class="mb-4">Create category </h2>
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Category name</label>
-                    <input formControlName="name" type="text" class="form-control" id="name" placeholder="Enter name"
-                        required>
+                    <input formControlName="name" type="text" class="form-control" placeholder="Enter name"
+                        [ngClass]="{ 'is-invalid': form.get('name')!.invalid && this.submited }">
+                    <div *ngIf="form.get('name')!.hasError('required')" class="invalid-feedback">
+                        Este campo es obligatorio
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea formControlName="description" class="form-control" id="description"
-                        placeholder="Enter description" required></textarea>
+                    <textarea formControlName="description" class="form-control" placeholder="Enter description"
+                        [ngClass]="{ 'is-invalid': form.get('description')!.invalid && this.submited }"></textarea>
+                    <div *ngIf="form.get('description')!.hasError('required')" class="invalid-feedback">
+                        Este campo es obligatorio
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="uploadImage" class="form-label">Upload image</label>
                     <input formControlName="uploadImage" type="file" (change)="onFileDrop($event)" class="form-control"
-                        id="uploadImage" required>
+                        [ngClass]="{ 'is-invalid': form.get('uploadImage')!.invalid && this.submited }">
+                    <div *ngIf="form.get('uploadImage')!.hasError('required')" class="invalid-feedback">
+                        Este campo es obligatorio
+                    </div>
                 </div>
 
                 <div class="row mt-2 text-center">
@@ -35,7 +44,7 @@
                     </div>
 
                     <div class="col-lg-6 mt-2">
-                        <button type="submit" class="btn btn-outline-success" [disabled]="form.invalid">Accept</button>
+                        <button type="submit" class="btn btn-outline-success">Create</button>
                     </div>
 
                 </div>

@@ -4,27 +4,17 @@
 
         <app-sidebar></app-sidebar>
 
-
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" *ngIf="!loading">
             <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Admin Users</h1>
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+                <h2>Registered users</h2>
             </div>
 
-            <ul class="box-info">
-                <li>
-                    <i class='bx bxs-group'></i>
-                    <span class="text">
-                        <h3>{{ users.length }}</h3>
-                        <p>Total users</p>
-                    </span>
-                </li>
-            </ul>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Fullname</th>
+                            <th scope="col">Full name</th>
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
@@ -44,7 +34,7 @@
                                 <p>{{ user.email }}</p>
                             </td>
                             <td>
-                                <p>{{ user.phone==''?'empty':user.phone}}</p>
+                                <p>{{ user.phone==''?'none':user.phone}}</p>
                             </td>
                             <td>
                                 <p>{{ user.role }}</p>
@@ -53,6 +43,19 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Páginacion -->
+            <nav *ngIf="this.users && this.users.length > 0" class="mt-4" aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" *ngFor="let page of generatePageArray(this.metadata.totalPages)"
+                        [ngClass]="{'active': page === this.metadata.currentPage}">
+                        <a class="page-link rounded-0"
+                            [attr.href]="page === this.metadata.currentPage ? null : generatePageLink(page)">{{ page
+                            }}</a>
+                    </li>
+                </ul>
+            </nav>
+
         </main>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -106,7 +106,8 @@ export class CreateProductComponent implements OnInit {
   }
 
   getCategories() {
-    this.categoriesService.getCategories().subscribe(
+    const customParams = new HttpParams().set('limit', '100');
+    this.categoriesService.getCategories(customParams).subscribe(
       (data: any) => {
         this.categories = data.categories;
       },
@@ -117,8 +118,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   onMainImageSelected(event: any) {
-    console.log(event.target.files);
-
     const file = event.target.files[0];
     this.form.get('mainImage')?.setValue(file);
   }

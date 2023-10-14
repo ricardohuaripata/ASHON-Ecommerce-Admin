@@ -7,26 +7,10 @@
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" *ngIf="!loading">
             <div
-                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4 border-bottom">
+                <h2>Recent orders</h2>
             </div>
 
-            <ul class="box-info">
-                <li>
-                    <i class='bx bxs-calendar-check'></i>
-                    <span class="text">
-                        <h3>{{ orders.length }}</h3>
-                        <p>Orders</p>
-                    </span>
-                </li>
-                <li>
-                    <i class='bx bxs-dollar-circle'></i>
-                    <span class="text">
-                        <h3>{{ totalSales | currency }}</h3>
-                        <p>Total Sales</p>
-                    </span>
-                </li>
-            </ul>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -51,6 +35,17 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Páginacion -->
+            <nav *ngIf="this.orders && this.orders.length > 0" class="mt-4" aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" *ngFor="let page of generatePageArray(this.metadata.totalPages)"
+                        [ngClass]="{'active': page === this.metadata.currentPage}">
+                        <a class="page-link rounded-0"
+                            [attr.href]="page === this.metadata.currentPage ? null : generatePageLink(page)">{{ page
+                            }}</a>
+                    </li>
+                </ul>
+            </nav>
         </main>
     </div>
 </div>

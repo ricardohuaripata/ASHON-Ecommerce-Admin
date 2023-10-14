@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class CreateCategoryComponent implements OnInit {
   form: FormGroup;
   loading: boolean = false;
+  submited: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -33,13 +34,16 @@ export class CreateCategoryComponent implements OnInit {
   ngOnInit(): void {}
 
   onFileDrop(event: any) {
-    console.log(event.target.files);
-
     const file = event.target.files[0];
     this.form.get('uploadImage')?.setValue(file);
   }
 
   addCategory() {
+    this.submited = true;
+    if (this.form.invalid) {
+      return;
+    }
+    
     this.form.disable;
     this.mostrarEsperaCarga();
 

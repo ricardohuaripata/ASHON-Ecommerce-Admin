@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { Category } from '../interfaces/category';
 import { Observable } from 'rxjs';
@@ -16,8 +16,8 @@ export class CategoriesService {
     this.apiUrl = 'api/category/';
   }
 
-  getCategories(): Observable<any> {
-    return this.http.get<any>(this.serverUrl + this.apiUrl);
+  getCategories(params: HttpParams): Observable<any> {
+    return this.http.get<any>(this.serverUrl + this.apiUrl, { params });
   }
 
   addCategory(categoryData: FormData): Observable<any> {
