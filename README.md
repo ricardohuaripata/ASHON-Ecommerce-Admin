@@ -9,5 +9,7 @@
 <h2 align="center">ASHON STORE ADMIN</h2>
 
 ![manage products](screenshots/manage-products.png)
+
 ![manage categories](screenshots/manage-categories.png)
+
 ![manage users](screenshots/users.png)
